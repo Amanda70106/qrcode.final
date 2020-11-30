@@ -18,7 +18,10 @@ docReady(function() {
     function onScanSuccess(qrCodeMessage) {
         if (qrCodeMessage !== lastResult) {
             ++countResults;
-            resultContainer.innerHTML -= `<div>${qrCodeMessage}</div>`;
+            if(countResults!=0)
+            {
+                resultContainer.innerHTML -= `<div>${qrCodeMessage}</div>`;
+            }
             lastResult = qrCodeMessage;
             resultContainer.innerHTML += `<div>${qrCodeMessage}</div>`;
             
