@@ -18,19 +18,21 @@ docReady(function() {
     function onScanSuccess(qrCodeMessage) {
         if (qrCodeMessage !== lastResult) {
             ++countResults;
+            resultContainer.innerHTML -= `<div>${qrCodeMessage}</div>`;
             lastResult = qrCodeMessage;
             resultContainer.innerHTML += `<div>${qrCodeMessage}</div>`;
             
             // Optional: To close the QR code scannign after the result is found
-            //html5QrcodeScanner.clear();
+            //html5QrcodeScanner.clear();<-do not close the camera
         }
     }
     
     // Optional callback for error, can be ignored.
     function onScanError(qrCodeError) {
-        // This callback would be called in case of qr code scan error or setup error.
-        // You can avoid this callback completely, as it can be very verbose in nature.
+        
     }
     
     html5QrcodeScanner.render(onScanSuccess, onScanError);
 });
+
+    
